@@ -30,7 +30,7 @@
     }
 
     .clock span {
-      font-size: 60vw;
+      /* font-size: 60vw; */
       line-height: 1;
       margin: 0;
       padding: 0;
@@ -57,6 +57,18 @@
   </div>
 
   <script>
+    function adjustFontSize() {
+        const textElement = document.querySelector('.clock');
+        const aspectRatio = window.innerWidth / window.innerHeight;
+
+        if (aspectRatio >= 1)
+            textElement.style.fontSize = '50vh';
+        else
+            textElement.style.fontSize = '50vw';
+    }
+    adjustFontSize();
+    window.addEventListener('resize', adjustFontSize);
+
     function updateClock() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
